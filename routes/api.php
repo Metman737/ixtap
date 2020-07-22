@@ -14,6 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', 'API\UserController@login');
+Route::post('register', 'API\UserController@register');
+
+Route::group(['middleware' => 'auth:api'], function(){
+
+    //User
+    Route::post('user/details', 'API\UserController@details');
+
+    //Lesson
+    Route::get('lessons', 'API\LessonController@index');
+    Route::get('lessons/{lesson}', 'API\LessonController@show');
+    Route::post('lessons', 'API\LessonController@store');
+    Route::put('lessons/{lesson}', 'API\LessonController@update');
+    Route::delete('lessons/{lesson}', 'API\LessonController@delete');
 });
