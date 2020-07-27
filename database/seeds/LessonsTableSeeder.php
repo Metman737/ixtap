@@ -30,7 +30,7 @@ class LessonsTableSeeder extends Seeder
                 'title' => $faker->word(),
                 'description' => $faker->paragraph,
                 'price' => $faker->price(5, 50, true, true),
-                'level' => $faker->numerify('Klasse #'),
+                'level' => $faker->numerify('# - # Klasse'),
                 'is_active' => $faker->boolean($chanceOfGettingTrue = 80)
             ]);
         }
